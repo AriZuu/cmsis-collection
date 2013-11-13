@@ -41,20 +41,14 @@ SRC_TXT +=	$(addprefix $(CMSIS)/src/, $(notdir $(DIST_SRC)))
 SRC_HDR +=	$(addprefix $(CMSIS)/inc/, $(notdir $(DIST_HDR)))
 SRC_OBJ +=
 
-
-$(SRC_TXT): $(DIST_SRC) $(CMSIS)/.patch-done
+$(SRC_TXT): $(DIST_SRC) 
 	mkdir -p $(CMSIS)/src
 	cp $(DIST_SRC) $(CMSIS)/src/
+	(cd $(CMSIS); patch < core_cm3.patch)
 
 $(SRC_HDR): $(DIST_HDR)
 	mkdir -p $(CMSIS)/inc
 	cp $(DIST_HDR) $(CMSIS)/inc/
 
-$(CMSIS)/.patch-done:
-	(cd $(CMSIS); patch < core_cm3.patch)
-	touch $(CMSIS)/.patch-done
-	echo patch done
-
 dist-clean:
 	rm -rf $(CMSIS)/src $(CMSIS)/inc
-	rm -f $(CMSIS)/.patch-done
