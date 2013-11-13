@@ -27,28 +27,23 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#
-# Dist from http://www.st.com/web/en/catalog/tools/PF257890
-#
-DIST_SRC +=	$(wildcard ../cmsis-dist/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/CMSIS/CM3/CoreSupport/*.c)
-DIST_SRC +=	$(wildcard ../cmsis-dist/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.c)
-DIST_SRC +=	$(wildcard ../cmsis-dist/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/*.c)
+DIST_TXT +=	$(wildcard ../cmsis-dist/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/CMSIS/CM3/CoreSupport/*.c)
+DIST_TXT +=	$(wildcard ../cmsis-dist/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.c)
+DIST_TXT +=	$(wildcard ../cmsis-dist/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/src/*.c)
 DIST_HDR +=	$(wildcard ../cmsis-dist/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/CMSIS/CM3/CoreSupport/*.h)
 DIST_HDR +=	$(wildcard ../cmsis-dist/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.h)
 DIST_HDR +=	$(wildcard ../cmsis-dist/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries/STM32F10x_StdPeriph_Driver/inc/*.h)
 
-SRC_TXT +=	$(addprefix $(CMSIS)/src/, $(notdir $(DIST_SRC)))
-SRC_HDR +=	$(addprefix $(CMSIS)/inc/, $(notdir $(DIST_HDR)))
+SRC_TXT +=	$(wildcard $(CMSIS)/src/*.c)
+SRC_HDR +=	$(wildcard $(CMSIS)/inc/*.h)
 SRC_OBJ +=
 
-$(SRC_TXT): $(DIST_SRC) 
+setup-src:
+	mkdir -p $(CMSIS)/inc
 	mkdir -p $(CMSIS)/src
-	cp $(DIST_SRC) $(CMSIS)/src/
+	cp $(DIST_HDR) $(CMSIS)/inc/
+	cp $(DIST_TXT) $(CMSIS)/src/
 	(cd $(CMSIS); patch < core_cm3.patch)
 
-$(SRC_HDR): $(DIST_HDR)
-	mkdir -p $(CMSIS)/inc
-	cp $(DIST_HDR) $(CMSIS)/inc/
-
-dist-clean:
+clean-src: clean
 	rm -rf $(CMSIS)/src $(CMSIS)/inc
