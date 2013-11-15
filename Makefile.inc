@@ -27,28 +27,32 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-DIST = $(CMSIS)/tmp/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries
+#
+# Compile CMSIS library using Pico]OS library Makefile
+#
 
-SRC_TXT +=	$(wildcard $(CMSIS)/src/*.c)
-SRC_HDR +=	$(wildcard $(CMSIS)/inc/*.h)
-SRC_OBJ +=
+RELROOT = ../picoos/
+PORT ?= cortex-m
+BUILD ?= RELEASE
 
-extract: $(CMSIS)/inc/core_cm3.h 
+include $(RELROOT)make/common.mak
 
-$(CMSIS)/inc/core_cm3.h:
-	mkdir -p $(CMSIS)/inc
-	mkdir -p $(CMSIS)/src
-	mkdir -p $(CMSIS)/tmp
-	(cd $(CMSIS)/tmp; unzip -q -aa ../../../cmsis-dist/stsw-stm32054.zip)
-	cp $(DIST)/CMSIS/CM3/CoreSupport/*.c $(CMSIS)/src/
-	cp $(DIST)/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.c $(CMSIS)/src/
-	cp $(DIST)/STM32F10x_StdPeriph_Driver/src/*.c $(CMSIS)/src/
-	(cd $(CMSIS); patch < core_cm3.patch)
-	cp $(DIST)/CMSIS/CM3/CoreSupport/*.h $(CMSIS)/inc/
-	cp $(DIST)/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.h $(CMSIS)/inc/
-	cp $(DIST)/STM32F10x_StdPeriph_Driver/inc/*.h $(CMSIS)/inc/
-	rm -rf $(CMSIS)/tmp
+TARGET = cmsis
+EXTRA_CFLAGS =  -Wno-missing-prototypes -Wno-missing-declarations
 
-distclean: clean
-	rm -rf $(CMSIS)/src $(CMSIS)/inc
-	rm -rf $(CMSIS)/tmp
+#
+# Include CMSIS-specific makefile fragment
+#
+ifneq '$(CMSIS)' ''
+include $(CMSIS)/cmsis.mak
+endif
+
+# 
+# Set output directory.
+#
+ifeq '$(strip $(DIR_OUTPUT))' ''
+DIR_OUTPUT = $(CURRENTDIR)/bin
+endif
+
+include $(MAKE_LIB)
+

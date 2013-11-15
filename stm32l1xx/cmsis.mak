@@ -27,7 +27,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-DIST = $(CMSIS)/tmp/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries
+DIST = $(CMSIS)/tmp/STM32L1xx_StdPeriph_Lib_V1.2.0/Libraries
 
 SRC_TXT +=	$(wildcard $(CMSIS)/src/*.c)
 SRC_HDR +=	$(wildcard $(CMSIS)/inc/*.h)
@@ -39,14 +39,12 @@ $(CMSIS)/inc/core_cm3.h:
 	mkdir -p $(CMSIS)/inc
 	mkdir -p $(CMSIS)/src
 	mkdir -p $(CMSIS)/tmp
-	(cd $(CMSIS)/tmp; unzip -q -aa ../../../cmsis-dist/stsw-stm32054.zip)
-	cp $(DIST)/CMSIS/CM3/CoreSupport/*.c $(CMSIS)/src/
-	cp $(DIST)/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.c $(CMSIS)/src/
-	cp $(DIST)/STM32F10x_StdPeriph_Driver/src/*.c $(CMSIS)/src/
-	(cd $(CMSIS); patch < core_cm3.patch)
-	cp $(DIST)/CMSIS/CM3/CoreSupport/*.h $(CMSIS)/inc/
-	cp $(DIST)/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.h $(CMSIS)/inc/
-	cp $(DIST)/STM32F10x_StdPeriph_Driver/inc/*.h $(CMSIS)/inc/
+	(cd $(CMSIS)/tmp; unzip -q -aa ../../../cmsis-dist/stsw-stm32077.zip)
+	cp $(DIST)/CMSIS/Device/ST/STM32L1xx/Source/Templates/*.c $(CMSIS)/src/
+	cp $(DIST)/STM32L1xx_StdPeriph_Driver/src/*.c $(CMSIS)/src/
+	cp $(DIST)/CMSIS/Include/*.h $(CMSIS)/inc/
+	cp $(DIST)/CMSIS/Device/ST/STM32L1xx/Include/*.h $(CMSIS)/inc/
+	cp $(DIST)/STM32L1xx_StdPeriph_Driver/inc/*.h $(CMSIS)/inc/
 	rm -rf $(CMSIS)/tmp
 
 distclean: clean
