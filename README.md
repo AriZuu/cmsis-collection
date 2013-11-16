@@ -12,11 +12,3 @@ To add a new CMSIS library to this collection, simply make a new subdirectory fo
 This subdirectory name should match to $(CMSIS) Makefile variable setting you will have.
 Copy cmsis.mak from one of the exiting cmsis directories to your new directory and
 edit it to copy and patch files as necessary.
-
-To build, first set up sources using 
-
-make CMSIS=stm32f10x setup-src
-
-This copies and patches sources from cmsis-dist.
-
-Then to build use normal pico]OS library module building.
