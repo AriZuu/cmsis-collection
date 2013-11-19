@@ -27,32 +27,13 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#
-# Compile CMSIS library using Pico]OS library Makefile
-#
+SRC_TXT +=	$(wildcard src/*.c)
+SRC_HDR +=	$(wildcard inc/*.h)
+SRC_OBJ +=
 
-RELROOT = ../picoos/
-PORT ?= cortex-m
-BUILD ?= RELEASE
+CMSIS_INCLUDES ?= inc
+CMSIS_DEFINES ?= STM32F10X_MD USE_STDPERIPH_DRIVER
+EXTRA_CFLAGS = -Wno-missing-prototypes
 
-include $(RELROOT)make/common.mak
-
-TARGET = cmsis
-EXTRA_CFLAGS =  -Wno-missing-prototypes -Wno-missing-declarations
-
-#
-# Include CMSIS-specific makefile fragment
-#
-ifneq '$(CMSIS)' ''
-include $(CMSIS)/cmsis.mak
-endif
-
-# 
-# Set output directory.
-#
-ifeq '$(strip $(DIR_OUTPUT))' ''
-DIR_OUTPUT = $(CURRENTDIR)/bin
-endif
-
-include $(MAKE_LIB)
+include ../Makefile.inc2
 

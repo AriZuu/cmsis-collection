@@ -27,23 +27,13 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-DIST = $(CMSIS)/tmp
-
-SRC_TXT +=	$(wildcard $(CMSIS)/src/*.c)
-SRC_HDR +=	$(wildcard $(CMSIS)/inc/*.h)
+SRC_TXT +=	$(wildcard src/*.c)
+SRC_HDR +=	$(wildcard inc/*.h)
 SRC_OBJ +=
 
-extract: $(CMSIS)/inc/core_cm0.h 
+CMSIS_INCLUDES ?= inc
+CMSIS_DEFINES ?= CORE_M0
+EXTRA_CFLAGS =  -Wno-missing-prototypes -Wno-maybe-uninitialized -Wno-cast-align -Wno-sign-compare
 
-$(CMSIS)/inc/core_cm0.h:
-	mkdir -p $(CMSIS)/inc
-	mkdir -p $(CMSIS)/src
-	mkdir -p $(CMSIS)/tmp
-	(cd $(CMSIS)/tmp; unzip -q -aa ../../../cmsis-dist/CMSISv2p00_LPC13xx.zip)
-	cp $(DIST)/src/*.c $(CMSIS)/src/
-	cp $(DIST)/inc/*.h $(CMSIS)/inc/
-	rm -rf $(CMSIS)/tmp
+include ../Makefile.inc2
 
-distclean: clean
-	rm -rf $(CMSIS)/src $(CMSIS)/inc
-	rm -rf $(CMSIS)/tmp

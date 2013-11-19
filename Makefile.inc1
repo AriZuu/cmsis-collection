@@ -27,26 +27,11 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-DIST = $(CMSIS)/tmp/STM32L1xx_StdPeriph_Lib_V1.2.0/Libraries
+all: extract
+	$(MAKE) -f Makefile.lib all
 
-SRC_TXT +=	$(wildcard $(CMSIS)/src/*.c)
-SRC_HDR +=	$(wildcard $(CMSIS)/inc/*.h)
-SRC_OBJ +=
-
-extract: $(CMSIS)/inc/core_cm3.h 
-
-$(CMSIS)/inc/core_cm3.h:
-	mkdir -p $(CMSIS)/inc
-	mkdir -p $(CMSIS)/src
-	mkdir -p $(CMSIS)/tmp
-	(cd $(CMSIS)/tmp; unzip -q -aa ../../../cmsis-dist/stsw-stm32077.zip)
-	cp $(DIST)/CMSIS/Device/ST/STM32L1xx/Source/Templates/*.c $(CMSIS)/src/
-	cp $(DIST)/STM32L1xx_StdPeriph_Driver/src/*.c $(CMSIS)/src/
-	cp $(DIST)/CMSIS/Include/*.h $(CMSIS)/inc/
-	cp $(DIST)/CMSIS/Device/ST/STM32L1xx/Include/*.h $(CMSIS)/inc/
-	cp $(DIST)/STM32L1xx_StdPeriph_Driver/inc/*.h $(CMSIS)/inc/
-	rm -rf $(CMSIS)/tmp
+clean:
+	$(MAKE) -f Makefile.lib clean
 
 distclean: clean
-	rm -rf $(CMSIS)/src $(CMSIS)/inc
-	rm -rf $(CMSIS)/tmp
+	rm -rf src inc tmp bin device

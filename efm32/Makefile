@@ -27,24 +27,28 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-DIST = $(CMSIS)/tmp/lpc_chip_11cxx_lib
+DIST 	= tmp
+DEVDIR 	= $(DIST)/Device/EnergyMicro
+DEVLIST	= $(notdir $(wildcard $(DEVDIR)/*))
 
-SRC_TXT +=	$(wildcard $(CMSIS)/src/*.c)
-SRC_HDR +=	$(wildcard $(CMSIS)/inc/*.h)
-SRC_OBJ +=
+include ../Makefile.inc1
 
-extract: $(CMSIS)/inc/core_cm0.h 
+extract: inc/core_cm3.h 
 
-$(CMSIS)/inc/core_cm0.h:
-	mkdir -p $(CMSIS)/inc
-	mkdir -p $(CMSIS)/src
-	mkdir -p $(CMSIS)/tmp
-	(cd $(CMSIS)/tmp; unzip -q -aa ../../../cmsis-dist/lpcopen_v2_00a_lpcxpresso_nxp_lpcxpresso_11c24.zip)
-	cp $(DIST)/src/*.c $(CMSIS)/src/
-	cp $(DIST)/inc/*.h $(CMSIS)/inc/
-	(cd $(CMSIS); patch < lpcopen.patch)
-	rm -rf $(CMSIS)/tmp
+inc/core_cm3.h:
+	mkdir -p inc
+	mkdir -p src
+	mkdir -p device
+	mkdir -p tmp
+	(cd tmp; unzip -q -aa ../../../cmsis-dist/em-cmsis-software.zip)
+	cp $(DIST)/CMSIS/Include/*.h inc/
+	cp $(DIST)/emlib/inc/*.h inc/
+	cp $(DIST)/emlib/src/*.c src/
+	cd $(DEVDIR); for dir in *; do \
+		mkdir -p ../../../device/$$dir/src; \
+		mkdir -p ../../../device/$$dir/inc; \
+		cp $$dir/Include/*.h ../../../device/$$dir/inc; \
+		cp $$dir/Source/*.c ../../../device/$$dir/src; \
+	done
+	rm -rf tmp
 
-distclean: clean
-	rm -rf $(CMSIS)/src $(CMSIS)/inc
-	rm -rf $(CMSIS)/tmp
