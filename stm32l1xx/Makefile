@@ -37,7 +37,7 @@ inc/core_cm3.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p tmp
-	(cd tmp; unzip -q -aa ../../../cmsis-dist/stsw-stm32077.zip)
+	(cd tmp; unzip -q -aa ../../distfiles/stsw-stm32077.zip)
 	cp $(DIST)/CMSIS/Device/ST/STM32L1xx/Source/Templates/*.c src/
 	cp $(DIST)/STM32L1xx_StdPeriph_Driver/src/*.c src/
 	cp $(DIST)/CMSIS/Include/*.h inc/

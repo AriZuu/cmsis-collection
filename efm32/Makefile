@@ -40,7 +40,7 @@ inc/core_cm3.h:
 	mkdir -p src
 	mkdir -p device
 	mkdir -p tmp
-	(cd tmp; unzip -q -aa ../../../cmsis-dist/em-cmsis-software.zip)
+	(cd tmp; unzip -q -aa ../../distfiles/em-cmsis-software.zip)
 	cp $(DIST)/CMSIS/Include/*.h inc/
 	cp $(DIST)/emlib/inc/*.h inc/
 	cp $(DIST)/emlib/src/*.c src/

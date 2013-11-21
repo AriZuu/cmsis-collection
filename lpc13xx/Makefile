@@ -37,7 +37,7 @@ inc/core_cm0.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p tmp
-	(cd tmp; unzip -q -aa ../../../cmsis-dist/CMSISv2p00_LPC13xx.zip)
+	(cd tmp; unzip -q -aa ../../distfiles/CMSISv2p00_LPC13xx.zip)
 	cp $(DIST)/src/*.c src/
 	cp $(DIST)/inc/*.h inc/
 	rm -rf tmp
