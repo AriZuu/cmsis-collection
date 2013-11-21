@@ -40,4 +40,5 @@ inc/core_cm0.h:
 	(cd tmp; unzip -q -aa ../../distfiles/CMSISv2p00_LPC13xx.zip)
 	cp $(DIST)/src/*.c src/
 	cp $(DIST)/inc/*.h inc/
+	patch < system.patch
 	rm -rf tmp
