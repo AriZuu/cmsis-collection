@@ -31,9 +31,9 @@ DIST = tmp
 
 include ../Makefile.inc1
 
-extract: inc/core_cm0.h 
+extract: inc/core_cm3.h 
 
-inc/core_cm0.h:
+inc/core_cm3.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p tmp
