@@ -27,7 +27,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-DIST = tmp/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries
+DIST = tmp/STM32L1xx_StdPeriph_Lib_V1.2.0/Libraries
 
 include ../Makefile.inc1
 
