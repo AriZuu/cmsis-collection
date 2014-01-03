@@ -1,6 +1,6 @@
 Lpc13xx standard peripheral library and CMSIS.
-Download distribution from http://support.code-red-tech.com/CodeRedWiki/CMSISprojects?action=AttachFile&do=get&target=CMSISv2p00_LPC13xx.zip
+Download distribution from http://www.lpcware.com/content/nxpfile/lpcopen-platform.
 
-Makefile expects to find the downloaded zip (CMSISv2p00_LPC13xx.zip) from
+Makefile expects to find the downloaded zip (lpcopen_2_05_lpcxpresso_nxp_lpcxpresso_1343.zip) from
 cmsis-dist (parallel to cmsis-collection directory).
 

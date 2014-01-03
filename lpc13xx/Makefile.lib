@@ -32,8 +32,8 @@ SRC_HDR +=	$(wildcard inc/*.h)
 SRC_OBJ +=
 
 CMSIS_INCLUDES ?= inc
-CMSIS_DEFINES ?= #CORE_M0
-EXTRA_CFLAGS = 
+CMSIS_DEFINES ?= CORE_M3
+EXTRA_CFLAGS =  -Wno-missing-prototypes -Wno-maybe-uninitialized -Wno-cast-align -Wno-sign-compare
 
 include ../Makefile.inc2
 

@@ -27,7 +27,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-DIST = tmp
+DIST  	= 	tmp/lpc_chip_13xx
 
 include ../Makefile.inc1
 
@@ -37,8 +37,7 @@ inc/core_cm3.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p tmp
-	(cd tmp; unzip -q -aa ../../distfiles/CMSISv2p00_LPC13xx.zip)
+	(cd tmp; unzip -q -aa ../../distfiles/lpcopen_2_05_lpcxpresso_nxp_lpcxpresso_1343.zip)
 	cp $(DIST)/src/*.c src/
 	cp $(DIST)/inc/*.h inc/
-	patch < system.patch
 	rm -rf tmp
