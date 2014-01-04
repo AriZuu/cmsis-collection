@@ -41,4 +41,5 @@ inc/core_cm0.h:
 	cp $(DIST)/src/*.c src/
 	cp $(DIST)/inc/*.h inc/
 	patch < lpcopen.patch
+	rm -f inc/sys_config.h
 	rm -rf tmp

@@ -40,4 +40,5 @@ inc/core_cm0plus.h:
 	(cd tmp; unzip -q -aa ../../distfiles/lpcopen_2_01_lpcxpresso_nxp_lpcxpresso_812.zip)
 	cp $(DIST)/src/*.c src/
 	cp $(DIST)/inc/*.h inc/
+	rm -f inc/sys_config.h
 	rm -rf tmp

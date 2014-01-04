@@ -40,4 +40,5 @@ inc/core_cm3.h:
 	(cd tmp; unzip -q -aa ../../distfiles/lpcopen_2_05_lpcxpresso_nxp_lpcxpresso_1343.zip)
 	cp $(DIST)/src/*.c src/
 	cp $(DIST)/inc/*.h inc/
+	rm -f inc/sys_config.h
 	rm -rf tmp
