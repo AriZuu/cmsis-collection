@@ -27,13 +27,13 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-SRC_TXT +=	$(wildcard src/*.c)
+SRC_TXT +=	$(wildcard src/system_TM4C123.c)
 SRC_TXT +=	$(wildcard tivaware/driverlib/*.c)
 SRC_HDR +=	$(wildcard inc/*.h)
 SRC_HDR +=	$(wildcard tivaware/inc/*.h)
 SRC_HDR +=	$(wildcard tivaware/driverlib/*.h)
 SRC_OBJ +=
-
+DIR_USRINC += tivaware
 CMSIS_INCLUDES ?= inc tivaware
 CMSIS_DEFINES ?= TM4C123GH6PM
 EXTRA_CFLAGS = -Wno-missing-prototypes
