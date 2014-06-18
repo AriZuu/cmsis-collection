@@ -46,4 +46,5 @@ inc/core_cm4.h:
 	cp $(DIST)/CMSIS-master/Device/TI/TM4C/Source/*.c src/
 	cp $(DIST)/Tivaware-master/inc/*.h tivaware/inc/
 	cp $(DIST)/Tivaware-master/driverlib/*.* tivaware/driverlib/
+	rm -f tivaware/driverlib/onewire.c
 	rm -rf tmp
