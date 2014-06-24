@@ -27,7 +27,12 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-SRC_TXT +=	$(wildcard src/system_TM4C123.c)
+# 
+# Don't compile SystemInit etc, so initialization with
+# tivaware driverlib functions can be done in application.
+#
+#SRC_TXT +=	$(wildcard src/system_TM4C123.c)
+#
 SRC_TXT +=	$(wildcard tivaware/driverlib/*.c)
 SRC_HDR +=	$(wildcard inc/*.h)
 SRC_HDR +=	$(wildcard tivaware/inc/*.h)
