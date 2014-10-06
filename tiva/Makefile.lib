@@ -41,7 +41,7 @@ SRC_OBJ +=
 DIR_USRINC += tivaware
 CMSIS_INCLUDES ?= inc tivaware
 CMSIS_DEFINES ?= TM4C123GH6PM
-EXTRA_CFLAGS = -Wno-missing-prototypes
+EXTRA_CFLAGS = -Wno-missing-prototypes -Wno-cast-align -Wno-old-style-declaration
 
 include ../Makefile.inc2
 
