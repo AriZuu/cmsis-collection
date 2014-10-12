@@ -43,5 +43,9 @@ CMSIS_INCLUDES ?= inc tivaware
 CMSIS_DEFINES ?= TM4C123GH6PM
 EXTRA_CFLAGS = -Wno-missing-prototypes -Wno-cast-align -Wno-old-style-declaration
 
+
 include ../Makefile.inc2
 
+ifeq '$(BUILD)' 'DEBUG'
+CDEFINES += DEBUG
+endif
