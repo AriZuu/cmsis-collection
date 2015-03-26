@@ -27,14 +27,14 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-CMSIS_FAMILY ?= EFM32G
-CMSIS_INCLUDES ?= inc device/$(CMSIS_FAMILY)/inc
-CMSIS_DEFINES ?= EFM32G210F128
+EFM32_FAMILY ?= EFM32G
+DIR_USRINC ?= inc device/$(EFM32_FAMILY)/inc
+EFM32_CHIP ?= EFM32G210F128
 EXTRA_CFLAGS = -Wno-cast-align
 
-SRC_TXT +=	$(wildcard device/$(CMSIS_FAMILY)/src/*.c)
+SRC_TXT +=	$(wildcard device/$(EFM32_FAMILY)/src/*.c)
 SRC_TXT +=	$(wildcard src/*.c)
-SRC_HDR +=	$(wildcard device/$(CMSIS_FAMILY)/inc/*.h)
+SRC_HDR +=	$(wildcard device/$(EFM32_FAMILY)/inc/*.h)
 SRC_HDR +=	$(wildcard inc/*.h)
 SRC_OBJ +=
 

@@ -31,8 +31,9 @@ SRC_TXT +=	$(wildcard src/*.c)
 SRC_HDR +=	$(wildcard inc/*.h)
 SRC_OBJ +=
 
-CMSIS_INCLUDES ?= inc
-CMSIS_DEFINES ?= 
+STM32_CHIP ?= STM32L1XX_MD
+CDEFINES ?= $(STM32_CHIP) USE_STDPERIPH_DRIVER
+DIR_USRINC ?= inc
 EXTRA_CFLAGS = -Wno-implicit-function-declaration
 
 include ../Makefile.inc2
