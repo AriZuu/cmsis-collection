@@ -31,9 +31,9 @@ SRC_TXT +=	$(wildcard src/driverlib/MSP432P4xx/*.c)
 SRC_HDR +=	$(wildcard inc/*.h) $(wildcard inc/CMSIS/*.h) $(wildcard src/driverlib/MSP432P4xx/*.h)
 SRC_OBJ +=
 
-CMSIS_INCLUDES ?= inc inc/CMSIS src/driverlib/MSP432P4xx
-CMSIS_DEFINES ?= __MSP432P401R__
-#EXTRA_CFLAGS =  -Wno-missing-prototypes -Wno-maybe-uninitialized -Wno-cast-align -Wno-sign-compare
+DIR_USRINC += inc inc/CMSIS src/driverlib/MSP432P4xx
+MSP432_CHIP ?= __MSP432P401R__
+CDEFINES += ABCDEF $(MSP432_CHIP)
 
 include ../Makefile.inc2
 
