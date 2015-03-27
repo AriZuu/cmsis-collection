@@ -31,8 +31,8 @@ SRC_TXT +=	$(wildcard src/*.c)
 SRC_HDR +=	$(wildcard inc/*.h)
 SRC_OBJ +=
 
-DIR_USRINC ?= inc
-CDEFINES ?= CORE_M3
+DIR_USRINC += inc
+CDEFINES += CORE_M3
 EXTRA_CFLAGS =  -Wno-missing-prototypes -Wno-maybe-uninitialized -Wno-cast-align -Wno-sign-compare
 
 include ../Makefile.inc2

@@ -33,5 +33,8 @@ SRC_OBJ +=
 
 EXTRA_CFLAGS =  -Wno-missing-prototypes -Wno-maybe-uninitialized -Wno-cast-align -Wno-sign-compare
 
+DIR_USRINC += inc
+CDEFINES += CORE_M0
+
 include ../Makefile.inc2
 

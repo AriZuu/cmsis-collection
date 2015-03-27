@@ -31,9 +31,10 @@ SRC_TXT +=	$(wildcard src/*.c)
 SRC_HDR +=	$(wildcard inc/*.h)
 SRC_OBJ +=
 
-DIR_USRINC ?= inc
 STM32_CHIP ?= STM32F10X_MD
-CDEFINES ?= $(STM32_CHIP) USE_STDPERIPH_DRIVER
+
+DIR_USRINC += inc
+CDEFINES += $(STM32_CHIP) USE_STDPERIPH_DRIVER
 EXTRA_CFLAGS = -Wno-missing-prototypes
 
 include ../Makefile.inc2

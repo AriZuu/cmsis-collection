@@ -39,8 +39,8 @@ SRC_HDR +=	$(wildcard tivaware/inc/*.h)
 SRC_HDR +=	$(wildcard tivaware/driverlib/*.h)
 SRC_OBJ +=
 
-DIR_USRINC += inc tivaware
 TIVA_DEFINES ?= TM4C123GH6PM
+DIR_USRINC += inc tivaware
 CDEFINES += gcc $(TIVA_DEFINES)
 EXTRA_CFLAGS = -Wno-missing-prototypes -Wno-cast-align -Wno-old-style-declaration -Wno-sign-compare
 

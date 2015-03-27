@@ -28,9 +28,11 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
 EFM32_FAMILY ?= EFM32G
-DIR_USRINC ?= inc device/$(EFM32_FAMILY)/inc
-EFM32_CHIP ?= EFM32G210F128
+EFM32_CHIP   ?= EFM32G210F128
+
+DIR_USRINC += inc device/$(EFM32_FAMILY)/inc
 EXTRA_CFLAGS = -Wno-cast-align
+CDEFINES += $(EFM32_CHIP)
 
 SRC_TXT +=	$(wildcard device/$(EFM32_FAMILY)/src/*.c)
 SRC_TXT +=	$(wildcard src/*.c)
