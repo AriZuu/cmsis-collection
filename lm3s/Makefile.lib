@@ -36,7 +36,7 @@ SRC_OBJ +=
 
 DIR_USRINC += inc stellaris
 CDEFINES += gcc
-EXTRA_CFLAGS = -Wno-missing-prototypes -Wno-cast-align -Wno-old-style-declaration -Wno-sign-compare
+EXTRA_CFLAGS += -Wno-missing-prototypes -Wno-cast-align -Wno-old-style-declaration -Wno-sign-compare
 
 
 include ../Makefile.inc2
