@@ -31,16 +31,15 @@ DIST = tmp/STM32L1xx_StdPeriph_Lib_V1.2.0/Libraries
 
 include ../Makefile.inc1
 
-extract: inc/core_cm3.h 
+extract: inc/system_stm32l1xx.h
 
-inc/core_cm3.h:
+inc/system_stm32l1xx.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p tmp
 	(cd tmp; unzip -q -aa ../../distfiles/stsw-stm32077.zip)
 	cp $(DIST)/CMSIS/Device/ST/STM32L1xx/Source/Templates/*.c src/
-	cp $(DIST)/STM32L1xx_StdPeriph_Driver/src/*.c src/
-	cp $(DIST)/CMSIS/Include/*.h inc/
 	cp $(DIST)/CMSIS/Device/ST/STM32L1xx/Include/*.h inc/
+	cp $(DIST)/STM32L1xx_StdPeriph_Driver/src/*.c src/
 	cp $(DIST)/STM32L1xx_StdPeriph_Driver/inc/*.h inc/
 	rm -rf tmp

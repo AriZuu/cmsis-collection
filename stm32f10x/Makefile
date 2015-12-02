@@ -31,18 +31,15 @@ DIST = tmp/STM32F10x_StdPeriph_Lib_V3.5.0/Libraries
 
 include ../Makefile.inc1
 
-extract: inc/core_cm3.h 
+extract: inc/system_stm32f10x.h
 
-inc/core_cm3.h:
+inc/system_stm32f10x.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p tmp
 	(cd tmp; unzip -q -aa ../../distfiles/stsw-stm32054.zip)
-	cp $(DIST)/CMSIS/CM3/CoreSupport/*.c src/
 	cp $(DIST)/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.c src/
-	cp $(DIST)/STM32F10x_StdPeriph_Driver/src/*.c src/
-	patch < core_cm3.patch
-	cp $(DIST)/CMSIS/CM3/CoreSupport/*.h inc/
 	cp $(DIST)/CMSIS/CM3/DeviceSupport/ST/STM32F10x/*.h inc/
+	cp $(DIST)/STM32F10x_StdPeriph_Driver/src/*.c src/
 	cp $(DIST)/STM32F10x_StdPeriph_Driver/inc/*.h inc/
 	rm -rf tmp

@@ -29,11 +29,12 @@
 
 DIST = tmp
 
+DISTCLEAN_EXTRA += tivaware
 include ../Makefile.inc1
 
-extract: inc/core_cm4.h 
+extract: inc/system_TM4C129.h
 
-inc/core_cm4.h:
+inc/system_TM4C129.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p tivaware/inc
@@ -41,10 +42,10 @@ inc/core_cm4.h:
 	mkdir -p tmp
 	(cd tmp; unzip -q -aa ../../distfiles/speters-cmsis.zip)
 	(cd tmp; unzip -q -aa ../../distfiles/antoinealb-tivaware.zip)
-	cp $(DIST)/CMSIS-master/Include/*.h inc/
 	cp $(DIST)/CMSIS-master/Device/TI/TM4C/Include/*.h inc/
 	cp $(DIST)/CMSIS-master/Device/TI/TM4C/Source/*.c src/
 	cp $(DIST)/Tivaware-master/inc/*.h tivaware/inc/
 	cp $(DIST)/Tivaware-master/driverlib/*.* tivaware/driverlib/
 	rm -f tivaware/driverlib/onewire.c
 	rm -rf tmp
+

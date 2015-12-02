@@ -31,9 +31,9 @@ DIST  	= 	tmp/lpc_chip_13xx
 
 include ../Makefile.inc1
 
-extract: inc/core_cm3.h 
+extract: inc/chip.h
 
-inc/core_cm3.h:
+inc/chip.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p tmp
@@ -41,4 +41,5 @@ inc/core_cm3.h:
 	cp $(DIST)/src/*.c src/
 	cp $(DIST)/inc/*.h inc/
 	rm -f inc/sys_config.h
+	rm -f inc/core_*.h
 	rm -rf tmp

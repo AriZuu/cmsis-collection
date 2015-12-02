@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2012-2013, Ari Suutari <ari@stonepile.fi>.
+# Copyright (c) 2015, Ari Suutari <ari@stonepile.fi>.
 # All rights reserved. 
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -27,19 +27,10 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-DIST  	= 	tmp/lpc_chip_8xx_lib
+all:
+	@echo "Nothing to do."
 
-include ../Makefile.inc1
-
-extract: inc/chip.h
-
-inc/chip.h:
-	mkdir -p inc
-	mkdir -p src
-	mkdir -p tmp
-	(cd tmp; unzip -q -aa ../../distfiles/lpcopen_2_01_lpcxpresso_nxp_lpcxpresso_812.zip)
-	cp $(DIST)/src/*.c src/
-	cp $(DIST)/inc/*.h inc/
-	rm -f inc/sys_config.h
-	rm -f inc/core_*.h
-	rm -rf tmp
+distclean:
+	rm -rf CMSIS
+	$(foreach m,$(dir $(wildcard */Makefile.lib)), cd $(m); $(MAKE) distclean; cd ..;)
+	

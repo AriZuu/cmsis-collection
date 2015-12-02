@@ -39,6 +39,6 @@ inc/msp432.h:
 	mkdir -p tmp
 	(cd tmp; unzip -q -aa ../../distfiles/MSP432_DriverLib_01_04_00_18.zip)
 	mv $(DIST)/driverlib src/
-	mv $(DIST)/inc/* inc/
+	cp $(DIST)/inc/*.h inc/
 	rm -rf tmp
 

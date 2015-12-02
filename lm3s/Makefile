@@ -28,12 +28,13 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
 DIST = tmp
+DISTCLEAN_EXTRA += stellaris
 
 include ../Makefile.inc1
 
-extract: inc/core_cm3.h 
+extract: inc/system_LM3S.h
 
-inc/core_cm3.h:
+inc/system_LM3S.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p stellaris/inc
@@ -41,7 +42,6 @@ inc/core_cm3.h:
 	mkdir -p tmp
 	(cd tmp; unzip -q -aa ../../distfiles/speters-cmsis.zip)
 	(cd tmp; unzip -q -aa ../../distfiles/yuvadm-stellaris.zip)
-	cp $(DIST)/CMSIS-master/Include/*.h inc/
 	cp $(DIST)/CMSIS-master/Device/TI/LM3S/Include/*.h inc/
 	cp $(DIST)/CMSIS-master/Device/TI/LM3S/Source/*.c src/
 	cp $(DIST)/stellaris-master/inc/*.h stellaris/inc/

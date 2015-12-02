@@ -32,6 +32,8 @@ RELROOT = ../../picoos/
 PORT ?= cortex-m
 BUILD ?= RELEASE
 
+DIR_USRINC += ../CMSIS/CMSIS/Include
+
 include $(RELROOT)make/common.mak
 
 TARGET = cmsis

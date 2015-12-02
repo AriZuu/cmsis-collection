@@ -28,7 +28,7 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
 SRC_TXT +=	$(wildcard src/driverlib/MSP432P4xx/*.c)
-SRC_HDR +=	$(wildcard inc/*.h) $(wildcard inc/CMSIS/*.h) $(wildcard src/driverlib/MSP432P4xx/*.h)
+SRC_HDR +=	$(wildcard inc/*.h) $(wildcard src/driverlib/MSP432P4xx/*.h)
 SRC_OBJ +=
 
 MSP432_CHIP ?= __MSP432P401R__

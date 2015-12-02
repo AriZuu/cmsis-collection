@@ -30,18 +30,18 @@
 DIST 	= tmp
 DEVDIR 	= $(DIST)/Device/EnergyMicro
 DEVLIST	= $(notdir $(wildcard $(DEVDIR)/*))
+DISTCLEAN_EXTRA += device
 
 include ../Makefile.inc1
 
-extract: inc/core_cm3.h 
+extract: inc/em_chip.h
 
-inc/core_cm3.h:
+inc/em_chip.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p device
 	mkdir -p tmp
 	(cd tmp; unzip -q -aa ../../distfiles/em-cmsis-software.zip)
-	cp $(DIST)/CMSIS/Include/*.h inc/
 	cp $(DIST)/emlib/inc/*.h inc/
 	cp $(DIST)/emlib/src/*.c src/
 	cd $(DEVDIR); for dir in *; do \
