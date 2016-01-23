@@ -27,8 +27,8 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-SRC_TXT +=	$(wildcard src/*.c)
-SRC_HDR +=	$(wildcard inc/*.h)
+SRC_TXT +=	$(filter-out src/stm32f4xx_fmc.c src/stm32f4xx_fsmc.c, $(wildcard src/*.c))
+SRC_HDR +=	$(filter-out inc/stm32f4xx_fmc.h inc/stm32f4xx_fsmc.h, $(wildcard inc/*.h))
 SRC_OBJ +=
 
 STM32_CHIP ?= STM32F4XX
