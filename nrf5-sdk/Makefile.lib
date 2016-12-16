@@ -37,19 +37,18 @@ DIR_USRINC += sdk/components/device \
 	sdk/components/toolchain \
 	sdk/components/drivers_nrf/hal \
 	sdk/components/libraries/util \
-	sdk/components/drivers_nrf/common \
-	sdk/components/libraries/log \
-	sdk/components/libraries/log/src \
-	sdk/components/drivers_nrf/uart \
-	sdk/components/drivers_nrf/rtc
+	sdk/components/libraries/log
 
 ifeq '$(strip $(NRF5_SOFTDEVICE))' ''
-DIR_USRINC += sdk/components/drivers_nrf/nrf_soc_nosd
+DIR_USRINC +=	sdk/components/drivers_nrf/nrf_soc_nosd
 else
-DIR_USRINC += sdk/components/softdevice/$(NRF5_SOFTDEVICE)/headers/
+DIR_USRINC +=	sdk/components/softdevice/$(NRF5_SOFTDEVICE)/headers \
+		sdk/components/softdevice/common/softdevice_handler
+
+NRF5_SOFTDEVICE_UPPER := $(shell echo $(NRF5_SOFTDEVICE) | tr '[:lower:]' '[:upper:]')
+CDEFINES += SOFTDEVICE_PRESENT $(NRF5_SOFTDEVICE_UPPER)
 endif
 
 CDEFINES += $(NRF5_DEFINES)
 
 include ../Makefile.inc2
-
