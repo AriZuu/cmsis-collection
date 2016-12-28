@@ -34,6 +34,8 @@ ifeq '$(BUILD)' 'DEBUG'
 CDEFINES += DEBUG
 endif
 
+EXTRA_CFLAGS += -Wno-cast-align
+
 export NRF5_DEFINES
 export NRF5_SOFTDEVICE
 export NRF5_DRIVERS

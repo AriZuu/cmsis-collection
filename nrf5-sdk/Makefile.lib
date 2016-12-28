@@ -31,7 +31,16 @@ SRC_TXT +=	sdk/components/toolchain/system_nrf51.c
 SRC_HDR +=	
 SRC_OBJ +=
 
-EXTRA_CFLAGS = -Wno-cast-align
+#
+# There are a lot of compiler warnings in NRF5 SDK.
+# Silence those for now and hope that situation gets better
+# in new versions.
+#
+EXTRA_CFLAGS =	-Wno-cast-align \
+		-Wno-missing-prototypes \
+		-Wno-bad-function-cast \
+		-Wno-sign-compare \
+		-Wno-missing-field-initializers
 
 NRF5_DEFINES ?= NRF51 NRF51822
 
