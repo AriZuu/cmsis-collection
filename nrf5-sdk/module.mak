@@ -3,9 +3,21 @@ NRF5_DEFINES ?= NRF51 NRF51822
 
 DIR_MODINC += $(MOD)/sdk/components/device \
 	$(MOD)/sdk/components/toolchain \
-	$(MOD)/sdk/components/drivers_nrf/hal \
-	$(MOD)/sdk/components/libraries/util \
-	$(MOD)/sdk/components/libraries/log
+	$(MOD)/sdk/components/drivers_nrf/hal
+
+DIR_MODINC += $(foreach D, \
+      $(NRF5_DRIVERS), \
+      $(MOD)/sdk/components/drivers_nrf/$(D))
+
+DIR_MODINC += $(foreach D, \
+      $(NRF5_BLE), \
+      $(MOD)/sdk/components/ble/$(D))
+
+DIR_MODINC += $(foreach D, \
+      $(NRF5_LIBRARIES), \
+      $(MOD)/sdk/components/libraries/$(D))
+
+DIR_MODINC += $(MOD)/sdk/components/boards
 
 ifeq '$(strip $(NRF5_SOFTDEVICE))' ''
 DIR_MODINC += $(MOD)/sdk/components/drivers_nrf/nrf_soc_nosd
@@ -24,3 +36,6 @@ endif
 
 export NRF5_DEFINES
 export NRF5_SOFTDEVICE
+export NRF5_DRIVERS
+export NRF5_BLE
+export NRF5_LIBRARIES

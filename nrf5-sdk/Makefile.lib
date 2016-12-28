@@ -31,17 +31,46 @@ SRC_TXT +=	sdk/components/toolchain/system_nrf51.c
 SRC_HDR +=	
 SRC_OBJ +=
 
+EXTRA_CFLAGS = -Wno-cast-align
+
 NRF5_DEFINES ?= NRF51 NRF51822
 
 DIR_USRINC += sdk/components/device \
 	sdk/components/toolchain \
-	sdk/components/drivers_nrf/hal \
-	sdk/components/libraries/util \
-	sdk/components/libraries/log
+	sdk/components/drivers_nrf/hal
+
+SRC_TXT +=  $(foreach D, \
+      $(NRF5_DRIVERS), \
+      $(wildcard sdk/components/drivers_nrf/$(D)/*.c))
+
+DIR_USRINC += $(foreach D, \
+      $(NRF5_DRIVERS), \
+      sdk/components/drivers_nrf/$(D))
+
+SRC_TXT +=  $(foreach D, \
+      $(NRF5_BLE), \
+      $(wildcard sdk/components/ble/$(D)/*.c))
+
+DIR_USRINC += $(foreach D, \
+      $(NRF5_BLE), \
+      sdk/components/ble/$(D))
+
+SRC_TXT +=  $(foreach D, \
+      $(filter-out timer,$(NRF5_LIBRARIES)), \
+      $(filter-out sdk/components/libraries/log/src/nrf_log_backend_serial.c sdk/components/libraries/bsp/bsp_btn_ant.c,$(wildcard sdk/components/libraries/$(D)/*.c)))
+
+DIR_USRINC += $(foreach D, \
+      $(NRF5_LIBRARIES), \
+      sdk/components/libraries/$(D))
+
+DIR_USRINC += sdk/components/boards
+
+SRC_TXT += $(wildcard sdk/components/boards/*.c)
 
 ifeq '$(strip $(NRF5_SOFTDEVICE))' ''
 DIR_USRINC +=	sdk/components/drivers_nrf/nrf_soc_nosd
 else
+SRC_TXT += $(wildcard sdk/components/softdevice/common/softdevice_handler/*.c)
 DIR_USRINC +=	sdk/components/softdevice/$(NRF5_SOFTDEVICE)/headers \
 		sdk/components/softdevice/common/softdevice_handler
 
