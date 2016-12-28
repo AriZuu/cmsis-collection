@@ -50,5 +50,8 @@ CDEFINES += SOFTDEVICE_PRESENT $(NRF5_SOFTDEVICE_UPPER)
 endif
 
 CDEFINES += $(NRF5_DEFINES)
+ifeq '$(BUILD)' 'DEBUG'
+CDEFINES += DEBUG
+endif
 
 include ../Makefile.inc2
