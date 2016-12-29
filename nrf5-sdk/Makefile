@@ -27,12 +27,10 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#DIST = tmp/STM32F4xx_DSP_StdPeriph_Lib_V1.6.1/Libraries
-
 include ../Makefile.inc1
 
 extract: sdk/components/sdk_validation.h
 
 sdk/components/sdk_validation.h:
-	echo TODO
-	exit 1
+	mkdir -p sdk
+	(cd sdk; unzip -q ../../distfiles/nRF5_SDK_12.2.0_f012efa.zip)
