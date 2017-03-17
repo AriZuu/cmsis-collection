@@ -27,7 +27,9 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 
-SRC_TXT +=	sdk/components/toolchain/system_nrf51.c log_backend.c
+SRC_TXT +=	sdk/components/toolchain/system_nrf51.c \
+		log_backend.c \
+		app_timer.c
 SRC_HDR +=	
 SRC_OBJ +=
 
