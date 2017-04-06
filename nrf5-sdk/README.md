@@ -1,24 +1,3 @@
-NRF5 SDK from Nordic Semiconductor.
+NRF5 SDK has been moved to [separete library][1].
 
-It can be downloaded from https://developer.nordicsemi.com/. Makefile expects
-to find downloaded zip in ../distfiles.
-
-To include the SDK in project, add following to the Makefile of the project:
-
-```
-CMSIS_MODULES		= $(CURRENTDIR)/../cmsis-ports/nrf5-sdk
-```
-
-To control what components from SDK are available to project, following
-knobs (Makefile variables) can be set in project Makefile:
-
-
-```
-NRF5_SOFTDEVICE	= s130
-NRF5_DRIVERS	= common clock gpiote
-NRF5_BLE	= common ble_advertising ble_services/ble_bas ble_services/ble_hrs
-NRF5_LIBRARIES	= log log/src timer fstorage experimental_section_vars sensorsim button fds util scheduler bsp
-NRF5_DEFINES  	= NRF51 NRF51822 BOARD_PCA10001 BLE_STACK_SUPPORT_REQD NRF_SD_BLE_API_VERSION=2
-```
-
-Knobs will automatically set correct include path for project.
+[1]: https://github.com/AriZuu/nrf5-sdk
