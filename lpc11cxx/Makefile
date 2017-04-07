@@ -37,7 +37,7 @@ inc/chip.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p tmp
-	(cd tmp; unzip -q -aa ../../distfiles/lpcopen_v2_00a_lpcxpresso_nxp_lpcxpresso_11c24.zip)
+	(cd tmp; unzip -q -aa ../../$(DISTFILES)/lpcopen_v2_00a_lpcxpresso_nxp_lpcxpresso_11c24.zip)
 	cp $(DIST)/src/*.c src/
 	cp $(DIST)/inc/*.h inc/
 	patch < lpcopen.patch

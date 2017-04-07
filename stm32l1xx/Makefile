@@ -37,7 +37,7 @@ inc/system_stm32l1xx.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p tmp
-	(cd tmp; unzip -q -aa ../../distfiles/stsw-stm32077.zip)
+	(cd tmp; unzip -q -aa ../../$(DISTFILES)/stsw-stm32077.zip)
 	cp $(DIST)/CMSIS/Device/ST/STM32L1xx/Source/Templates/*.c src/
 	cp $(DIST)/CMSIS/Device/ST/STM32L1xx/Include/*.h inc/
 	cp $(DIST)/STM32L1xx_StdPeriph_Driver/src/*.c src/

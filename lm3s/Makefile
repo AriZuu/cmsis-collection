@@ -40,8 +40,8 @@ inc/system_LM3S.h:
 	mkdir -p stellaris/inc
 	mkdir -p stellaris/driverlib
 	mkdir -p tmp
-	(cd tmp; unzip -q -aa ../../distfiles/speters-cmsis.zip)
-	(cd tmp; unzip -q -aa ../../distfiles/yuvadm-stellaris.zip)
+	(cd tmp; unzip -q -aa ../../$(DISTFILES)/speters-cmsis.zip)
+	(cd tmp; unzip -q -aa ../../$(DISTFILES)/yuvadm-stellaris.zip)
 	cp $(DIST)/CMSIS-master/Device/TI/LM3S/Include/*.h inc/
 	cp $(DIST)/CMSIS-master/Device/TI/LM3S/Source/*.c src/
 	cp $(DIST)/stellaris-master/inc/*.h stellaris/inc/

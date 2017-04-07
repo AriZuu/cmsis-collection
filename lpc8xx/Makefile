@@ -37,7 +37,7 @@ inc/chip.h:
 	mkdir -p inc
 	mkdir -p src
 	mkdir -p tmp
-	(cd tmp; unzip -q -aa ../../distfiles/lpcopen_2_01_lpcxpresso_nxp_lpcxpresso_812.zip)
+	(cd tmp; unzip -q -aa ../../$(DISTFILES)/lpcopen_2_01_lpcxpresso_nxp_lpcxpresso_812.zip)
 	cp $(DIST)/src/*.c src/
 	cp $(DIST)/inc/*.h inc/
 	rm -f inc/sys_config.h

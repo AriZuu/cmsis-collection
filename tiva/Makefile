@@ -40,8 +40,8 @@ inc/system_TM4C129.h:
 	mkdir -p tivaware/inc
 	mkdir -p tivaware/driverlib
 	mkdir -p tmp
-	(cd tmp; unzip -q -aa ../../distfiles/speters-cmsis.zip)
-	(cd tmp; unzip -q -aa ../../distfiles/antoinealb-tivaware.zip)
+	(cd tmp; unzip -q -aa ../../$(DISTFILES)/speters-cmsis.zip)
+	(cd tmp; unzip -q -aa ../../$(DISTFILES)/antoinealb-tivaware.zip)
 	cp $(DIST)/CMSIS-master/Device/TI/TM4C/Include/*.h inc/
 	cp $(DIST)/CMSIS-master/Device/TI/TM4C/Source/*.c src/
 	cp $(DIST)/Tivaware-master/inc/*.h tivaware/inc/

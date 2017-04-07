@@ -9,5 +9,5 @@ and driverlib found at
 https://github.com/antoinealb/Tivaware
 
 Makefile expects to find the downloaded zips (speters-cmsis.zip and
-antoinealb-tivaware.zip) from ../distfiles.
+antoinealb-tivaware.zip) from ../../distfiles.
 

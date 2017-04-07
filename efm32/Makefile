@@ -41,7 +41,7 @@ inc/em_chip.h:
 	mkdir -p src
 	mkdir -p device
 	mkdir -p tmp
-	(cd tmp; unzip -q -aa ../../distfiles/em-cmsis-software.zip)
+	(cd tmp; unzip -q -aa ../../$(DISTFILES)/em-cmsis-software.zip)
 	cp $(DIST)/emlib/inc/*.h inc/
 	cp $(DIST)/emlib/src/*.c src/
 	cd $(DEVDIR); for dir in *; do \
