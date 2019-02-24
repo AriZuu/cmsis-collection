@@ -54,7 +54,7 @@ set(SOURCE
 
 add_custom_command(
   OUTPUT ${SOURCE}
-  COMMAND mkdir -p work
+  COMMAND ${CMAKE_COMMAND} -E make_directory work
   COMMAND tar -xvf ${DIST} -m -C work
   DEPENDS ${DIST}
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
