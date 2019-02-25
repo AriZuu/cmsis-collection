@@ -55,7 +55,7 @@ set(SOURCE
 add_custom_command(
   OUTPUT ${SOURCE}
   COMMAND ${CMAKE_COMMAND} -E make_directory work
-  COMMAND tar -xvf ${DIST} -m -C work
+  COMMAND tar -xf ${DIST} -m -C work
   DEPENDS ${DIST}
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   COMMENT "unpacking stuff")
