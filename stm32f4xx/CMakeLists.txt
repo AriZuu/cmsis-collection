@@ -2,8 +2,8 @@ include_guard(GLOBAL)
 
 include(${CMAKE_CURRENT_LIST_DIR}/../cmsis-common.cmake)
 
-set(DIST ${DISTFILES}/stm32f4_dsp_stdperiph_lib.zip)
-set(SOURCE_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/work/STM32F4xx_DSP_StdPeriph_Lib_V1.6.1/Libraries)
+set(DIST ${DISTFILES}/en.stm32f4_dsp_stdperiph_lib.zip)
+set(SOURCE_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/work/STM32F4xx_DSP_StdPeriph_Lib_V1.8.0/Libraries)
 set(DEVICE_SOURCE ${SOURCE_ROOT}/CMSIS/Device/ST/STM32F4xx/Source/Templates)
 set(DEVICE_INCLUDE ${SOURCE_ROOT}/CMSIS/Device/ST/STM32F4xx/Include)
 set(PERIPH_SOURCE ${SOURCE_ROOT}/STM32F4xx_StdPeriph_Driver/src)
